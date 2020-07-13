@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Conditional from './Components/Conditional.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  // App component starts with state isLoading === true
+  constructor() {
+    super()
+    this.state = {
+      isLoading: true
+    }
+  }
+
+  // Sets 
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 1500)
+  }
+
+  render(){
+    return(
+      <>
+        <h1>Nav Bar</h1>
+        <Conditional isLoading={this.state.isLoading} />
+        <h1>Footer</h1>
+      </>
+    )
+  }
 }
 
 export default App;
